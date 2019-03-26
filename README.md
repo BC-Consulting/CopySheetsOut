@@ -1,18 +1,63 @@
 # Save all sheets in separate files
 
-Macro to save all the sheets from a spreadsheet in separate files. Filename is automatically generated from sheet name.
+LibreOffice macro to save all the sheets from a spreadsheet in separate files. Filenames are automatically generated from sheets name.
 
 Macro has the following customisation:
 
-- Output format (xls, xlsx, ods, csv)
+- Output format (xls, xlsx, ods or csv)
 - Location of the output folder
 - Output filename can be further customised
 
+## Installation
+
+Download "CopySheetOut.bas" to your computer, open the file in an editor and copy all its content to clipboard.
+
+Open LibreOffice macro editor: Tools -> Macros -> Edit macros (note: macros must be enabled, this is not the default in LibreOffice!)
+
+Expand: My Macros & Dialogs -> Standard -> Module1
+
+![macros](macro.png)
+
+Paste clipboard into Module1. "Sub CopySheetOut()" is created.
+
+## How to use
+
+1. Open the spreadsheet you want to copy sheets from
+
+2. Open the macro editor
+
+3. Scroll to the following section inside "Sub CopySheetOut()"
+
+    <pre>
+    ' - * - * - * - * - *
+    'Start customisation
+    </pre>
+
+4. And change the following variables to fit your requirements:
+
+    <pre>
+      Full name of the folder to save the documents to.
+      On Windows use / instead of \ to define the folder path.
+      Terminate the path with /
+         <font color="blue">root = "C:/Your/Output/folder/here/"
+         loca = "another/sub-folder/"</font>
+      We use a special naming convention: root/sheet_name/loca/sheet_name.extn
+    
+      The output name will be the sheet name with some changes
+      An optional suffix for the filename
+         <font color="blue">suff = ""</font>
+    
+      Output file format:
+         <font color="blue">extn = 0</font>   -  0: .xls;  1: .xlsx;  3: .ods;   4: .csv
+    </pre>
+
 ## Notes
 
-Path separator is / not \ (even on WIndows)!
+Path separator is / not \ (even on Windows)!
 
-## Csv options:
+To enabled macros: Tools -> Options... -> LibreOffice -> Security -> Macro Security... -> *select your security model to allow execution of macros (medium is good)*.
+
+## CSV options:
 
 To save in .csv takes an extra parameter: *FilterOptions*
 
@@ -38,6 +83,6 @@ This macro is free software: you can redistribute it and/or modify it under the 
 
 This macro is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-Copy of the GNU General Public License is availabel at: [http://www.gnu.org/licenses/]()
+Copy of the GNU General Public License is availabel at: [http://www.gnu.org/licenses/](http://www.gnu.org/licenses/)
 
 ©2019 - GeoProc.com
